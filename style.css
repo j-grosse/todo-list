@@ -1,7 +1,14 @@
 html,
 body {
+  height: 100vh;
+  background: rgb(63,94,251);
+  background: linear-gradient(45deg, rgb(192, 203, 255) 0%, rgb(252, 155, 70) 100%); /* https://cssgradient.io/ */
 }
 
 .todo-list {
-  margin: 10rem 4rem;
+  margin-top: 20rem;
 }
+
+/* ul {
+  list-style-type: none;
+} */

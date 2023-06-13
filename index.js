@@ -29,10 +29,10 @@ var textnode = document.createTextNode('JavaScript DOM');
 e.appendChild(textnode); 
 Code language: JavaScript (javascript)
 After that, you can use the appendChild() method to attach the new element to the DOM tree.
-
 */
 
-/** TODO :  
+// TODO : UX
+/** 
  * 1 STEP
  * We type in some input
  * When we click to the button (submit), we want to add our input value to the list

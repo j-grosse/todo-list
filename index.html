@@ -17,7 +17,7 @@
 
 <!-- BODY -->
 
-<body class="container-fluid bg-danger-subtle">
+<body class="container-fluid bg-danger-subtle px-0">
     <!-- nav: https://getbootstrap.com/docs/5.3/components/navbar/#nav -->
     <!-- Colors: https://getbootstrap.com/docs/5.3/customize/color/#colors -->
     <nav class="navbar bg-primary-subtle">
@@ -25,7 +25,7 @@
             <a class="navbar-brand" href="#">
                 <img src="https://vignette.wikia.nocookie.net/bindingofisaac/images/b/b6/Todo.png/revision/latest/scale-to-width-down/541?cb=20130325190035&path-prefix=de"
                     alt="Logo" width="70" class="d-inline-block align-text-top" />
-                Just do it - Todo List
+                Todo List
             </a>
         </div>
     </nav>
@@ -35,9 +35,9 @@
     <!-- Bootstrap form input with button:
       https://getbootstrap.com/docs/5.3/forms/input-group/#basic-example -->
 
-    <main class="container-fluid todo-list bg-warning-subtle p-3">
+    <main class="container-fluid todo-list p-3 mt-3">
         <div class="row">
-            <div class="col">
+            <div class="col-3 mx-auto bg-warning-subtle">
 
                 <h1>Todo List</h1>
                 <!-- https://getbootstrap.com/docs/5.3/forms/input-group/ -->
@@ -48,6 +48,12 @@
                         Button
                     </button>
                 </div>
+                <div class="list-append">
+
+
+                </div>
+
+
 
             </div> <!-- col-->
         </div> <!-- row -->
@@ -55,17 +61,19 @@
 
     <!-- FOOTER-->
 
-    <!-- Bootstrap Footer: https://getbootstrap.com/docs/5.3/examples/footers/ -->
+    <!-- Bootstrap Footer: https://getbootstrap.com/docs/5.3/examples/footers/             
+         use bootstrap class "fixed-bottom" and "mb-0" (margin bottom) on footer -->
 
-    <div class="container-fluid bg-success-subtle">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="container-fluid">
+        <footer
+            class="fixed-bottom mb-0 bg-success-subtle d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center">
                 <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
                     <svg class="bi" width="30" height="24">
                         <use xlink:href="#bootstrap"></use>
                     </svg>
                 </a>
-                <span class="mb-3 mb-md-0 text-body-secondary">© 2023 Company, Inc</span>
+                <span class="mb-3 mb-md-0 text-body-secondary">© 2023 ZorMerJak Inc</span>
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
