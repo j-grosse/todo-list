@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="./style.css" /
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <title>Todo List</title>
+  </head>
+
+  <!-- BODY -->
+
+  <body class="bg-danger-subtle">
+    <!-- nav: https://getbootstrap.com/docs/5.3/components/navbar/#nav -->
+    <!-- Colors: https://getbootstrap.com/docs/5.3/customize/color/#colors -->
+    <nav class="navbar bg-primary-subtle">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="https://vignette.wikia.nocookie.net/bindingofisaac/images/b/b6/Todo.png/revision/latest/scale-to-width-down/541?cb=20130325190035&path-prefix=de"
+            alt="Logo"
+            width="70"
+            class="d-inline-block align-text-top"
+          />
+          Just do it - Todo List
+        </a>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+
+    <!-- Bootstrap form input with button:
+      https://getbootstrap.com/docs/5.3/forms/input-group/#basic-example -->
+
+    <main class="todo-list bg-warning-subtle p-3">
+      <h1>Todo List</h1>
+
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="add task"
+          aria-label="task"
+          aria-describedby="button-addon2"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          id="button-addon2"
+        >
+          Button
+        </button>
+      </div>
+    </main>
+
+    <!-- FOOTER-->
+
+    <!-- Bootstrap Footer: https://getbootstrap.com/docs/5.3/examples/footers/ -->
+
+    <div class="container-fluid bg-success-subtle">
+      <footer
+        class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+      >
+        <div class="col-md-4 d-flex align-items-center">
+          <a
+            href="/"
+            class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
+          >
+            <svg class="bi" width="30" height="24">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+          </a>
+          <span class="mb-3 mb-md-0 text-body-secondary"
+            >© 2023 Company, Inc</span
+          >
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+          <li class="ms-3">
+            <a class="text-body-secondary" href="#"
+              ><svg class="bi" width="24" height="24">
+                <use xlink:href="#twitter"></use></svg
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a class="text-body-secondary" href="#"
+              ><svg class="bi" width="24" height="24">
+                <use xlink:href="#instagram"></use></svg
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a class="text-body-secondary" href="#"
+              ><svg class="bi" width="24" height="24">
+                <use xlink:href="#facebook"></use></svg
+            ></a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="./index.js"></script>
+  </body>
+</html>
