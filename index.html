@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" type="text/css" href="./style.css" />
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -39,17 +39,24 @@
         <div class="row">
             <div class="col-3 mx-auto bg-warning-subtle">
 
-                <h1>Todo List</h1>
+                <h1>To-Do List</h1>
                 <!-- https://getbootstrap.com/docs/5.3/forms/input-group/ -->
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="add task" aria-label="task"
                         aria-describedby="button-addon2" id="input" />
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                        Button
+                        Add Task
                     </button>
                 </div>
                 <div class="list-append">
-
+					<ul class="list-container" id="list-container">
+						<li class="listItem">Task 1</li>
+						<li class="listItem">Task 2</li>
+						<li class="listItem">
+                            Task 3 <i class="fa fa-check" aria-hidden="true"></i></li>
+					
+					
+					</ul>
 
                 </div>
 
@@ -62,7 +69,7 @@
     <!-- FOOTER-->
 
     <!-- Bootstrap Footer: https://getbootstrap.com/docs/5.3/examples/footers/             
-         use bootstrap class "fixed-bottom" and "mb-0" (margin bottom) on footer -->
+    use bootstrap class "fixed-bottom" and "mb-0" (margin bottom) on footer -->
 
     <div class="container-fluid">
         <footer
