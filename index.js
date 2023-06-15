@@ -3,17 +3,78 @@ const form = document.getElementById("todo-form");
 const addButton = document.getElementById("add-button");
 const listContainer = document.getElementById("list-container")
 
-console.log(form);
+//console.log(form);
 
 function addToDo(event) {
+
     event.preventDefault();
+
+	// task variable is for storing the value of the input (whatever input the user types)
+    // task stores user form input
     let task = formControl.value;
     if (!task){
         alert ("Write something!");
         return;
     }
-    console.log(task);
+	//console.log(task);
+
+	// this is for reseting the input value
+	formControl.value = "";
+
+/* 	1) Create DOM Elements */
+	const newItem = document.createElement("li");
+	newItem.innerText = task;
+	//li text, add text to li 
+    listContainer.appendChild(newItem);
+
+
+	/* Create delete button */
+	const deleteButton = document.createElement("button");
+    // a class -- deleteButton.classList.add('');
+	deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
+	newItem.appendChild(deleteButton);
+
+	deleteButton.addEventListener('click', () => {
+		listContainer.removeChild(newItem);
+	})
+
+
+	/* Create a check button */
+	const checkBox = document.createElement("button")
+	// class needs to be added
+	checkBox.innerHTML = '<i class="fa fa-check"></i>';
+	newItem.appendChild(checkBox);
+
+	checkBox.addEventListener("click", () => {
+		newItem.classList.toggle("completed");
+	})
+
+    // innerText is aware of the rendered appearance of text - while textContent is not.
+
+    const editBox = document.createElement("button")
+	// class needs to be added
+	editBox.innerHTML = '<i class="fa fa-edit"></i>';
+	newItem.appendChild(editBox);
+
+	editBox.addEventListener("click", () => {
+        // 
+	})
 }
+
+
+function updateToDo(event) {
+
+    // when click ing on pencil icon    
+
+}
+
+
+
+
+
+
+// This event listener is listening the submit event & triggering the addToDo function
+// add ToDo on button click
 form.addEventListener("submit", addToDo);
 
 
@@ -21,38 +82,20 @@ form.addEventListener("submit", addToDo);
  
 
 
+
+
+
+
+
+
+
+
+
 // CREATE
 // target elements with querySelector
-// appendChildren
 // add a ul with some li todos
+// append text
 
-/*
-Create a DOM Element
-This tutorial shows you how to create a DOM element and attach it to the DOM tree.
-
-To create a DOM element, you use the createElement() method.
-
-const element = document.createElement(htmlTag);
-Code language: JavaScript (javascript)
-The following example creates a new <div> element:
-
-const e = document.createElement('div');
-Code language: JavaScript (javascript)
-And fill the <div> element with any HTML content:
-
-e.innerHTML = 'JavaScript DOM';
-Code language: JavaScript (javascript)
-And attach the <div> element to the DOM tree by using the appendChild() method:
-
-document.body.appendChild(e);
-Code language: CSS (css)
-Besides using the innerHTML property, you can use the DOM methods to create text nodes and append the text nodes to the new element:
-
-var textnode = document.createTextNode('JavaScript DOM');
-e.appendChild(textnode); 
-Code language: JavaScript (javascript)
-After that, you can use the appendChild() method to attach the new element to the DOM tree.
-*/
 
 // TODO : UX
 /** 
