@@ -13,7 +13,7 @@ ul {
 }
 
 ul li::before {
-  content: ``;
+  content: '■';
   position:absolute;
   height: 28px;
   width:28px;

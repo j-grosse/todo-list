@@ -1,3 +1,26 @@
+const formControl = document.getElementById("name");
+const form = document.getElementById("todo-form");
+const addButton = document.getElementById("add-button");
+const listContainer = document.getElementById("list-container")
+
+console.log(form);
+
+function addToDo(event) {
+    event.preventDefault();
+    let task = formControl.value;
+    if (!task){
+        alert ("Write something!");
+        return;
+    }
+    console.log(task);
+}
+form.addEventListener("submit", addToDo);
+
+
+
+ 
+
+
 // CREATE
 // target elements with querySelector
 // appendChildren
