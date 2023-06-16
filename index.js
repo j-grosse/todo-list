@@ -1,182 +1,125 @@
-const formControl = document.getElementById("name");
-const form = document.getElementById("todo-form");
-const addButton = document.getElementById("add-button");
-const listContainer = document.getElementById("list-container")
+const form = document.getElementById('form');
+const toDoInput = document.getElementById('toDoInput');
+const toDoList = document.getElementById('list-container');
 
-//console.log(form);
+let toDos = [];
+/* let toDos = [{ toDo: "buy groceries", isDone: false},
+	 { toDo: "read book", isDone: false} ] */
 
-function addToDo(event) {
+const saveToLocalStorage = () => {
+	const strToDos = JSON.stringify(toDos);
+	localStorage.setItem("toDos", strToDos);
+	
+}
 
-    event.preventDefault();
+const getFromLocalStorage = () => {
+	const parsedToDos = JSON.parse(localStorage.getItem("toDos"));
+	if (parsedToDos){
+		toDos = parsedToDos;
+	}else{
+		toDos = [];
+	}
+	render();
+}
 
-	// task variable is for storing the value of the input (whatever input the user types)
-    // task stores user form input
-    let task = formControl.value;
-    if (!task){
-        alert ("Do something nice today!");
-        return;
-    }
-	//console.log(task);
+const render = (e) => {
 
-	// this is for reseting the input value
-	formControl.value = "";
+	toDoList.innerHTML = "";
+	
+	/* Create DOM elements for the each toDos */
+	toDos.forEach( (toDoObj) => {
+		const listItem = document.createElement("li");
+		const span = document.createElement("span");
+		listItem.classList.add('list-item');
+		span.innerText = toDoObj.toDo; // textContent
+		listItem.appendChild(span);
+		toDoList.appendChild(listItem);
 
-/* 	1) Create DOM Elements */
-	const newItem = document.createElement("li");
-	const span = document.createElement("span"); // for us to easily manipulate when we are editing, li will have 2 children
-	span.innerText = task;
-	//li text, add text to li 
-    listContainer.appendChild(newItem);
-	newItem.appendChild(span);
+			/* Create delete button */
+		const deleteBtn = document.createElement("button");
+		deleteBtn.classList.add('delete-btn');
+		deleteBtn.innerHTML = '<i class="fa fa-trash"></i>';
+		listItem.appendChild(deleteBtn);
+		/* add an event listener to the delete button  */
+		deleteBtn.addEventListener('click', () => {
 
-
-	/* Create delete button */
-	const deleteButton = document.createElement("button");
-    // a class -- deleteButton.classList.add('');
-	deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
-	newItem.appendChild(deleteButton);
-
-	deleteButton.addEventListener('click', () => {
-		listContainer.removeChild(newItem);
-	})
-
-
-	/* Create a check button */
-	const checkBox = document.createElement("button")
-	// class needs to be added
-	checkBox.innerHTML = '<i class="fa fa-check"></i>';
-	newItem.appendChild(checkBox);
-
-	checkBox.addEventListener("click", () => {
-		newItem.classList.toggle("completed");
-	})
-
-    // innerText is aware of the rendered appearance of text - while textContent is not.
-
-    const editBox = document.createElement("button")
-	// class needs to be added
-	editBox.innerHTML = '<i class="fa fa-edit"></i>';
-	newItem.appendChild(editBox);
-
-	editBox.addEventListener("click", () => {
-        // replace the task text with an input field for editing
-
-        const editInput = document.createElement("input");
-        editInput.type = "text";
-        editInput.value = span.innerText;
-        newItem.innerText = ""; //clear the text of the task
-		newItem.replaceChild(editInput, span);
-
-        // create a save button 
-        const saveButton = document.createElement("button");
-        saveButton.innerText = "Save";
-        newItem.appendChild(saveButton);
-
-        saveButton.addEventListener("click", () => {
-            const newTask = editInput.value;
-            span.innerText = newTask;
-			newItem.replaceChild(span, editInput);
-			newItem.replaceChild(editBox, saveButton);
-            // need to reattach the Listeners for the Check box and the delete one.
+			toDos = toDos.filter((item) => item.toDo !== toDoObj.toDo ); // update the toDos array
+			saveToLocalStorage(toDos);
+			toDoList.removeChild(listItem);
 		});
 
-		newItem.replaceChild(saveButton, editBox);
-    })
+		/* 	Create Check/done Button */
+		const checkBtn = document.createElement("button");
+		checkBtn.classList.add('check-btn');
+		checkBtn.innerHTML = '<i class="fa fa-check"></i>';
+		listItem.appendChild(checkBtn);
+		/* add an event listener to the check button  */
+		checkBtn.addEventListener('click', () => {
+
+			toDoObj.isDone = true;
+			toDos = toDos.filter((item) => item.isDone !== true );
+			saveToLocalStorage(toDos);
+			listItem.classList.toggle("completed")
+		});
+
+		/* Create Edit Button */
+		const editBtn = document.createElement("button");
+		editBtn.classList.add('edit-btn');
+		editBtn.innerHTML = '<i class="fa fa-edit"></i>';
+		listItem.appendChild(editBtn);
+		
+		/* add an event listener to the edit button  */
+		editBtn.addEventListener('click', () => {
+			const inputEdit = document.createElement('input');
+			inputEdit.type = 'text';
+			inputEdit.value = toDoObj.toDo;
+			listItem.replaceChild(inputEdit, span);
+
+			const saveBtn = document.createElement("button");
+			saveBtn.classList.add('edit-btn');
+			saveBtn.innerHTML = '<i class="fa fa-save"></i>';
+	
+			saveBtn.addEventListener('click', () => {
+				const newToDo = inputEdit.value;
+				const oldToDo = span.textContent;
+				span.innerText = newToDo;
+
+				toDos = toDos.map( (item) => {
+					if ( item.toDo === oldToDo )
+						return { toDo: newToDo, isDone: item.isDone};
+					return item;
+				});
+				saveToLocalStorage(toDos);
+				listItem.replaceChild(span, inputEdit);
+				listItem.replaceChild(editBtn, saveBtn);
+				render();
+			})
+			listItem.replaceChild(saveBtn, editBtn);
+		});
+	
+	});
 
 }
 
+const addToDo = (e) => {
+	e.preventDefault(); // prevents reloading the page after the submit
 
-function updateToDo(event) {
+	let task = toDoInput.value; // or let task = e.target.toDo.value;
+	if (!task){
+		alert("please add a task -- write to remember!");
+		return ;
+	}
 
-    // when click ing on pencil icon    
-
+	const newTaskItem = { toDo: task, isDone: false};
+	toDos.push(newTaskItem);
+	saveToLocalStorage();
+	console.log(toDos);
+	toDoInput.value = ""; //reset the form inputs typed in on the input field or e.target.reset();
+	render(); // render the book on the DOM
 }
 
+// Func. call as event listener 
+form.addEventListener('submit', addToDo);
+getFromLocalStorage();
 
 
-
-// This event listener is listening the submit event & triggering the addToDo function
-// add ToDo on button click
-form.addEventListener("submit", addToDo);
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-// CREATE
-// target elements with querySelector
-// add a ul with some li todos
-// append text
-
-
-// TODO : UX
-/** 
- * 1 STEP
- * We type in some input
- * When we click to the button (submit), we want to add our input value to the list
- * We want to show the list we created on the screen
- * 
- * 2 STEP
- * We want to modify/update the list element directly on the UI
- * 
- * 3 STEP 
- * We want to delete/ remove the item from the list
- * 
- * BONUS ?
- * 4 STEP
- * mark as completed
-*/
-
-// https://getbootstrap.com/docs/5.3/components/list-group/#active-items
-
-
-let btnToAdd = document.getElementById('button-addon2');
-let inputValue = document.getElementById('input');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// READ
-
-// UPDATE
-// replace
-
-// DELETE
-// removeChild
-
-// Bonus:
-
-// strike through - style=“text-decoration: strikethrough;”
-
-// checkbox
