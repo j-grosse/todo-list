@@ -13,7 +13,7 @@ function addToDo(event) {
     // task stores user form input
     let task = formControl.value;
     if (!task){
-        alert ("Write something!");
+        alert ("Do something nice today!");
         return;
     }
 	//console.log(task);
@@ -23,9 +23,11 @@ function addToDo(event) {
 
 /* 	1) Create DOM Elements */
 	const newItem = document.createElement("li");
-	newItem.innerText = task;
+	const span = document.createElement("span"); // for us to easily manipulate when we are editing, li will have 2 children
+	span.innerText = task;
 	//li text, add text to li 
     listContainer.appendChild(newItem);
+	newItem.appendChild(span);
 
 
 	/* Create delete button */
@@ -57,8 +59,30 @@ function addToDo(event) {
 	newItem.appendChild(editBox);
 
 	editBox.addEventListener("click", () => {
-        // 
-	})
+        // replace the task text with an input field for editing
+
+        const editInput = document.createElement("input");
+        editInput.type = "text";
+        editInput.value = span.innerText;
+        newItem.innerText = ""; //clear the text of the task
+		newItem.replaceChild(editInput, span);
+
+        // create a save button 
+        const saveButton = document.createElement("button");
+        saveButton.innerText = "Save";
+        newItem.appendChild(saveButton);
+
+        saveButton.addEventListener("click", () => {
+            const newTask = editInput.value;
+            span.innerText = newTask;
+			newItem.replaceChild(span, editInput);
+			newItem.replaceChild(editBox, saveButton);
+            // need to reattach the Listeners for the Check box and the delete one.
+		});
+
+		newItem.replaceChild(saveButton, editBox);
+    })
+
 }
 
 
@@ -67,8 +91,6 @@ function updateToDo(event) {
     // when click ing on pencil icon    
 
 }
-
-
 
 
 

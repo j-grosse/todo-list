@@ -37,7 +37,7 @@
             width="70"
             class="d-inline-block align-text-top"
           />
-          Todo List
+          Just get it done!
         </a>
       </div>
     </nav>
@@ -49,8 +49,8 @@
 
     <main class="container-fluid todo-list p-3 mt-3">
       <div class="row">
-        <div class="col-3 mx-auto bg-warning-subtle">
-          <h1>To-Do List</h1>
+        <div class="col-3 mx-auto bg-warning-subtle"></div>
+          <h1>To-Do List <img src="./deadline.jpg" alt="plan" style="width: 150px; height: 90px;"></h1>
           <!-- https://getbootstrap.com/docs/5.3/forms/input-group/ -->
           <!-- <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="add task" aria-label="task"
@@ -59,15 +59,19 @@
                         Add Task
                     </button>
                 </div> -->
-
-          <form id="todo-form" action="" method="get">
-            <div class="form-example">
-              <label for="name">Enter your name: </label>
-              <input type="text" name="name" id="name" />
-            </div>
-            <button id="add-button">Add Task</button>
-            <!-- <input type="submit" value="Subscribe!"> -->
-          </form>
+          <div class="form">
+            <form id="todo-form" action="" method="get">
+              <div class="form-example">
+                <label for="name">Add your task: </label>
+                <div class="input-group">
+                <input type="text" name="name" id="name"/>
+                <button id="add-button">Add</button>
+                </div>
+                
+              </div>
+              <!-- <input type="submit" value="Subscribe!"> -->
+            </form>
+          </div>
 
           <ul class="list-container" id="list-container">
             <li class="listItem">Task 1</li>
@@ -101,7 +105,7 @@
             </svg>
           </a>
           <span class="mb-3 mb-md-0 text-body-secondary"
-            >© 2023 ZorMerJak Inc</span
+            >© 2023 ZoriMerJak Inc</span
           >
         </div>
 

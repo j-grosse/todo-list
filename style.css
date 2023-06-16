@@ -4,15 +4,35 @@ body {
   background: linear-gradient(45deg, rgb(192, 203, 255) 0%, rgb(252, 155, 70) 100%); /* https://cssgradient.io/ */
 }
 
-.todo-list {
+
+/*.todo-list {
   margin-top: 20rem;
+  width: 100%;
+  max-width: 540px;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  border-radius: 10px;
+    background-color: #fff;
+}*/
+
+.todo-list {
+  margin-top: 10rem;
+  width: 100%;
+  max-width: 540px;
+  margin: 100px auto 20px;
+  padding: 40px 30px;
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 ul {
   list-style-type: none;
 }
 
-ul li::before {
+/*ul li::before {
   content: '■';
   position:absolute;
   height: 28px;
@@ -23,10 +43,74 @@ background-size:cover;
 background-position:center;
 top:12px;
 left:8px;
-}
+}*/
 
 .completed{
 	text-decoration: line-through;
 	opacity: 0.7;
 	color: green;
 }
+
+#todo-form {
+  /*margin-bottom: 20px;*/
+  width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-example {
+  /*margin-bottom: 20px;*/
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#name {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#add-button {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  background: rgb(239, 166, 111);
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#add-button:hover {
+  background-color: rgb(198, 198, 236);
+}
+
+h1 {
+  font-family: quantico;
+}
+
+.input-group button {
+width:50%;
+}
+
+/*.form{
+  border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+
+
