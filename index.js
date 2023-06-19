@@ -55,11 +55,11 @@ const render = (e) => {
 		listItem.appendChild(checkBtn);
 		/* add an event listener to the check button  */
 		checkBtn.addEventListener('click', () => {
-
+	
 			toDoObj.isDone = true;
 			toDos = toDos.filter((item) => item.isDone !== true );
 			saveToLocalStorage(toDos);
-			listItem.classList.toggle("completed")
+			span.classList.toggle("completed")
 		});
 
 		/* Create Edit Button */
