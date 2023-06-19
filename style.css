@@ -103,6 +103,7 @@ left:8px;
 	color: green;
 }
 
+/*
 .delete-btn
 {
 	background-color: #292828;
@@ -111,10 +112,11 @@ left:8px;
 	font-size: 20px;
 	line-height: 20px;
 	padding: 2px 5px;
-	cursor: pointer;
+	cursor: pointer; 
  /*  position: absolute;
 	top: 50%;
 	right: 0; */
 	/* transform: translate(240%, -50%);  */
 	/* transition: opacity 0.3s ease;  */
 }
+*/
